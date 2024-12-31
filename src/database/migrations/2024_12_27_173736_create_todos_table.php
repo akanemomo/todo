@@ -7,28 +7,27 @@ use Illuminate\Support\Facades\Schema;
 class CreateTodosTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    * Run the migrations.
+    *
+    * @return void
+    */
     public function up()
     {
         Schema::create('todos', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->nullable()->constrained()->cascadeOnDelete(); // nullable を追加
-            $table->string('content', 20);
-            $table->timestamps();
+        $table->id();
+        $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+        $table->string('content', 20);
+        $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    * Reverse the migrations.
+    *
+    * @return void
+    */
     public function down()
     {
-        Schema::dropIfExists('todos');
+    Schema::dropIfExists('todos');
     }
 }
